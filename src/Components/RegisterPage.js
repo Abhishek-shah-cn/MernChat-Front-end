@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import makeToast from "../Toaster";
 
-function RegisterPage() {
+const RegisterPage = (props) => {
   const nameRef = React.createRef();
   const emailRef = React.createRef();
   const passwordRef = React.createRef();
@@ -70,6 +70,6 @@ function RegisterPage() {
       <button onClick={registerUser}>Register</button>
     </div>
   );
-}
+};
 
 export default RegisterPage;

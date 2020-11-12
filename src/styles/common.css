@@ -23,7 +23,7 @@ body {
 }
 
 .cardHeader {
-  background: #f7c52a;
+  background: #f72a34e8;
   padding: 0.75rem 1.5rem;
   border-radius: 2px;
   text-transform: uppercase;
@@ -62,7 +62,7 @@ input:focus {
 }
 
 button {
-  background: #f7c52a;
+  background: pink;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 2px;
@@ -85,7 +85,7 @@ a {
   text-decoration: none;
 }
 .join {
-  background: #f7c52a;
+  background: #0fe090;
   padding: 0.25rem 1rem;
   border-radius: 2px;
 }

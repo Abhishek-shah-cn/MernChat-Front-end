@@ -1,37 +1,38 @@
 import React from "react";
 import makeToast from "../Toaster";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
-function Loginpage() {
+const LoginPage = (props) => {
+  const emailRef = React.createRef();
+  const passwordRef = React.createRef();
 
-    const emailRef = React.createRef();
-    const passwordRef = React.createRef();
-  
-    const loginUser = (props) => {
-      const email = emailRef.current.value;
-      const password = passwordRef.current.value;
-  
-      axios
-        .post("http://localhost:8000/user/login", {
-          email,
-          password,
-        })
-        .then((response) => {
-          makeToast("success", response.data.message);
-          localStorage.setItem("ChatToken", response.data.token);
-          props.history.push("/dashboard");
-        })
-        .catch((err) => {
-          // console.log(err);
-          if (
-            err &&
-            err.response &&
-            err.response.data &&
-            err.response.data.message
-          )
-            makeToast("error", err.response.data.message);
-        });
-    };
+  const loginUser = () => {
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    axios
+      .post("http://localhost:8000/user/login", {
+        email,
+        password,
+      })
+      .then((response) => {
+        makeToast("success", response.data.message);
+        localStorage.setItem("CC_Token", response.data.token);
+        props.history.push("/dashboard");
+        props.setupSocket();
+      })
+      .catch((err) => {
+        // console.log(err);
+        if (
+          err &&
+          err.response &&
+          err.response.data &&
+          err.response.data.message
+        )
+          makeToast("error", err.response.data.message);
+      });
+  };
 
   return (
     <div className="card">
@@ -61,6 +62,6 @@ function Loginpage() {
       </div>
     </div>
   );
-}
+};
 
-export default Loginpage;
+export default withRouter(LoginPage);

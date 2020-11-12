@@ -8,7 +8,7 @@ const DashboardPage = (props) => {
     axios
       .get("http://localhost:8000/chatroom", {
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("ChatToken"),
+          Authorization: "Bearer " + localStorage.getItem("CC_Token"),
         },
       })
       .then((response) => {
@@ -34,7 +34,7 @@ const DashboardPage = (props) => {
             type="text"
             name="chatroomName"
             id="chatroomName"
-            placeholder="ChatterBox Nepal"
+            placeholder="ChatterBox"
           />
         </div>
       </div>
