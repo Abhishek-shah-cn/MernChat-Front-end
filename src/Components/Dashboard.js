@@ -11,7 +11,7 @@ function Dashboard() {
             type="text"
             name="chatroomName"
             id="chatroomName"
-            placeholder="ChatterBox Nepal"
+            placeholder="Start Chatting"
           />
         </div>
       </div>

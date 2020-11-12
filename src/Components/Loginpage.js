@@ -1,6 +1,38 @@
 import React from "react";
+import makeToast from "../Toaster";
+import axios from "axios";
 
 function Loginpage() {
+
+    const emailRef = React.createRef();
+    const passwordRef = React.createRef();
+  
+    const loginUser = (props) => {
+      const email = emailRef.current.value;
+      const password = passwordRef.current.value;
+  
+      axios
+        .post("http://localhost:8000/user/login", {
+          email,
+          password,
+        })
+        .then((response) => {
+          makeToast("success", response.data.message);
+          localStorage.setItem("ChatToken", response.data.token);
+          props.history.push("/dashboard");
+        })
+        .catch((err) => {
+          // console.log(err);
+          if (
+            err &&
+            err.response &&
+            err.response.data &&
+            err.response.data.message
+          )
+            makeToast("error", err.response.data.message);
+        });
+    };
+
   return (
     <div className="card">
       <div className="cardHeader">Login</div>

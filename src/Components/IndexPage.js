@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
 
-function IndexPage() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const IndexPage = (props) => {
+  React.useEffect(() => {
+    const token = localStorage.getItem("ChatToken");
+    console.log(token);
+    if (!token) {
+      props.history.push("/login");
+    } else {
+      props.history.push("/dashboard");
+    }
+ 
+  }, [0]);
+  return <div></div>;
+};
 
-export default IndexPage
+export default IndexPage;
